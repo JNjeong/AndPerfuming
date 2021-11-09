@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/miSearch"
+        android:icon="@drawable/ic_search"
+        android:title="SEARCH" />
+    <item
+        android:id="@+id/miReview"
+        android:icon="@drawable/ic_stars"
+        android:title="REVIEW" />
+    <item
+        android:id="@+id/miHome"
+        android:icon="@drawable/ic_home"
+        android:title="HOME" />
+    <item
+        android:id="@+id/miBoard"
+        android:icon="@drawable/ic_reviewlist"
+        android:title="BOARD" />
+    <item
+        android:id="@+id/miMyPage"
+        android:icon="@drawable/ic_mypage"
+        android:title="MYPAGE" />
+</menu>
