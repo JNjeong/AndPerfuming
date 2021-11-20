@@ -8,27 +8,37 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.jjn.perfuming.Adapter.searchPagerAdapter;
 import com.jjn.perfuming.MainFragment.BoardFragment;
 import com.jjn.perfuming.MainFragment.HomeFragment;
 import com.jjn.perfuming.MainFragment.MyPageFragment;
 import com.jjn.perfuming.MainFragment.ReviewFragment;
 import com.jjn.perfuming.MainFragment.SearchFragment;
+import com.jjn.perfuming.drawerFragment.DrawerBrandFragment;
+import com.jjn.perfuming.drawerFragment.DrawerScentFragment;
+import com.jjn.perfuming.drawerFragment.DrawerSeasonFragment;
 
 /*
 * 컨텐츠 전반을 담는 MainActivity
@@ -60,10 +70,14 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mainToolbar;
     NavigationView nvSearch;
     DrawerLayout Login;
+    ViewPager2 vp_category;
+    TabLayout tab_drawer;
+    EditText etSearch;
+    ScrollView drawer_scroll, scroll_brand;
 
     //fragment 관리자 선언
-    FragmentManager fgmanager;
-    FragmentTransaction fgTransaction;
+    FragmentManager fgmanager, searchfgmanager;
+    FragmentTransaction fgTransaction, searchfgtransaction;
     int selectedFragment = 0;
 
     //fragment 선언
@@ -72,11 +86,15 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homefg;
     BoardFragment boardfg;
     MyPageFragment mypagefg;
+    DrawerBrandFragment brandfg;
+    DrawerSeasonFragment seasonfg;
+    DrawerScentFragment scentfg;
 
     LinearLayout drawerLayout;
     ImageButton imgbtnTagList;
     LinearLayout tagListLayout;
     Button btnCloseTag;
+    searchPagerAdapter searchadapter;
 
     /* 툴바 오버라이드 옵션 */
     @Override
@@ -133,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
 //            nvSearch = findViewById(R.id.nvSearch);
             drawerLayout = findViewById(R.id.drawerLayout);
             Login = findViewById(R.id.Login);
+            vp_category = findViewById(R.id.vp_category);
+            tab_drawer = findViewById(R.id.tab_drawer);
+            etSearch = findViewById(R.id.etSearch);
+            drawer_scroll = findViewById(R.id.drawer_scroll);
+            scroll_brand = findViewById(R.id.scroll_brand);
 
             //fragment객체화
             searchfg = new SearchFragment();
@@ -140,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
             homefg = new HomeFragment();
             boardfg = new BoardFragment(this);
             mypagefg = new MyPageFragment();
+            brandfg = new DrawerBrandFragment();
+            seasonfg = new DrawerSeasonFragment();
+            scentfg = new DrawerScentFragment();
 
             //툴바연결
             setSupportActionBar(mainToolbar);
@@ -151,6 +177,47 @@ public class MainActivity extends AppCompatActivity {
             tagListLayout = findViewById(R.id.tagListLayout);
             btnCloseTag = findViewById(R.id.btnCloseTag);
         }
+
+        /* drawer 내부에 tab 구현 및 설정 */
+        searchadapter = new searchPagerAdapter(MainActivity.this);
+        searchadapter.addFragment(brandfg);
+        searchadapter.addFragment(seasonfg);
+        searchadapter.addFragment(scentfg);
+        vp_category.setAdapter(searchadapter);
+        String[] arrSearchTab = {"BRAND", "SEOSON", "SCENT"};
+        new TabLayoutMediator(tab_drawer, vp_category, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(arrSearchTab[position]);
+            }
+        }).attach();
+        brandfg.setOnChangeListener(new DrawerBrandFragment.onChangeListener() {
+            @Override
+            public void onChanged(String text) {
+                etSearch.setText(text);
+            }
+        });
+        seasonfg.setOnChangeListener(new DrawerSeasonFragment.onChangeListener() {
+            @Override
+            public void onChanged(String text) {
+                etSearch.setText(text);
+            }
+        });
+        scentfg.setOnChangeListener(new DrawerScentFragment.onChangeListener() {
+            @Override
+            public void onChanged(String text) {
+                etSearch.setText(text);
+            }
+        });
+
+//        scroll_brand.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                drawer_scroll.requestDisallowInterceptTouchEvent(true);
+//                return false;
+//            }
+//        });
+
 
 
         /* BottomNavigationView, MainMenu 구현 */
@@ -191,15 +258,11 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Tag Close!" , Toast.LENGTH_SHORT).show();
                         }
                     });
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
+
                 }
+
+
                 //메뉴에서 review가 선택되었을때
                 else if(item.getItemId() == R.id.miReview){
                     if(selectedFragment != 2){

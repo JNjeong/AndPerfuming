@@ -56,7 +56,6 @@ public class BoardFragment extends Fragment {
     Context mContext;
 
     public BoardFragment(Context context) {
-
         this.mContext = context;
     }
 

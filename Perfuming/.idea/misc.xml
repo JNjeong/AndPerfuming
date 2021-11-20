@@ -17,7 +17,7 @@
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/activity_sign_in.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/activity_wish.xml" value="0.38645833333333335" />
-        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/drawer_search.xml" value="0.5" />
+        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/drawer_search.xml" value="0.33" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board.xml" value="0.33" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board_event.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board_event_event.xml" value="0.38645833333333335" />
@@ -27,6 +27,10 @@
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board_notice.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board_notice_item.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_board_price_item.xml" value="0.38645833333333335" />
+        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_drawer_brand.xml" value="0.32581648522550544" />
+        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_drawer_brand_fragment.xml" value="0.38645833333333335" />
+        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_drawer_scent.xml" value="0.38645833333333335" />
+        <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_drawer_season.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_home.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_my_page.xml" value="0.38645833333333335" />
         <entry key="..\:/CSE/Android/Android_workspace/Perfuming/app/src/main/res/layout/fragment_mypage.xml" value="0.38645833333333335" />
